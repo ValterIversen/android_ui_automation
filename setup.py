@@ -1,21 +1,17 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="android_ui_automation",
-    version="0.1.0",
+    name="robotframework-androiduiautomation",
+    version="0.1.6",
+    description="Robot Framework library for Android automation using uiautomator2",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    author="Seu Nome",
     packages=find_packages(),
+    py_modules=["AndroidUiAutomation"], 
     install_requires=[
-        "uiautomator2>=2.16.1",
+        "uiautomator2",
+        "robotframework",
     ],
     python_requires=">=3.8",
-    description="Python library for Android UI automation using uiautomator2",
-    long_description=open("README.md", encoding="utf-8").read(),
-    long_description_content_type="text/markdown",
-    author="Valter Souza",
-    url="https://github.com/seuusuario/android_ui_automation",
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    ],
 )

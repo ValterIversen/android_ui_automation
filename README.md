@@ -7,7 +7,14 @@ Python library for Android UI automation using uiautomator2, compatible with Rob
 You can install the library via pip:
 
 ```bash
-pip install android_ui_automation
+pip install robotframework-androiduiautomation
+```
+Or install locally for development:
+
+```bash
+git clone <your-repo-url>
+cd robotframework-androiduiautomation
+pip install -e .
 ```
 
 Make sure `uiautomator2` is installed automatically as a dependency.
@@ -18,7 +25,7 @@ Make sure `uiautomator2` is installed automatically as a dependency.
 
 ```robot
 *** Settings ***
-Library    android_ui_automation
+Library    AndroidUiAutomation
 ```
 
 ### Variables
