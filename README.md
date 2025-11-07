@@ -12,7 +12,7 @@ pip install robotframework-androiduiautomation
 Or install locally for development:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ValterIversen/android_ui_automation
 cd robotframework-androiduiautomation
 pip install -e .
 ```

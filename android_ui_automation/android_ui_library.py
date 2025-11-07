@@ -67,7 +67,7 @@ class AndroidUiAutomation:
         
     # Check visibility or invisibility ---------------------------
         
-    def wait_until_text_is_visible(self, texto, timeout=10):
+    def wait_until_text_appears(self, texto, timeout=10):
         """
         Waits until an element with the specified text is visible.
 
@@ -81,7 +81,7 @@ class AndroidUiAutomation:
         if not self.d(text=texto).wait(timeout=timeout):
             raise Exception(f"Element with text '{texto}' not found after {timeout} seconds.")
         
-    def wait_until_text_is_not_visible(self, texto, timeout=10):
+    def wait_until_text_disappears(self, texto, timeout=10):
         """
         Waits until an element with the specified text disappears.
 
@@ -95,12 +95,12 @@ class AndroidUiAutomation:
         if not self.d(text=texto).wait_gone(timeout=timeout):
             raise Exception(f"Element with text '{texto}' still visible even after {timeout} seconds.")
         
-    def wait_until_element_is_visible(self, selector, timeout=10):
+    def wait_until_element_appears(self, selector, timeout=10):
         """
-        Waits until an element located via XPath or UiSelector is visible.
+        Waits until an element located via XPath is visible.
 
         Args:
-            selector (str): XPath string starting with '//' or UiSelector string.
+            selector (str): XPath string starting with '//'.
             timeout (int): Maximum seconds to wait. Default is 10.
 
         Returns:
@@ -110,24 +110,18 @@ class AndroidUiAutomation:
             TypeError: If selector is not a string.
             Exception: If element does not appear within the timeout.
         """
-        if isinstance(selector, str):
-            if selector.startswith("//") or selector.startswith("("):
-                element = self.d.xpath(selector)
-            else:  # Assume UiSelector
-                element = self.d(**{"uiautomator": selector})
-        else:
-            raise TypeError("Selector must be a string (XPath or UiSelector)")
+        element = self.d.xpath(selector)
 
         if not element.wait(timeout=timeout):
             raise Exception(f"Element with selector '{selector}' not found after {timeout} seconds.")
         return element
         
-    def wait_until_element_is_not_visible(self, selector, timeout=10):
+    def wait_until_element_disappears(self, selector, timeout=10):
         """
-        Waits until an element located via XPath or UiSelector disappears.
+        Waits until an element located via XPath disappears.
 
         Args:
-            selector (str): XPath string starting with '//' or UiSelector string.
+            selector (str): XPath string starting with '//'.
             timeout (int): Maximum seconds to wait. Default is 10.
 
         Returns:
@@ -137,47 +131,35 @@ class AndroidUiAutomation:
             TypeError: If selector is not a string.
             Exception: If element remains visible after the timeout.
         """
-        if isinstance(selector, str):
-            if selector.startswith("//") or selector.startswith("("):
-                element = self.d.xpath(selector)
-            else:  # Assume UiSelector
-                element = self.d(**{"uiautomator": selector})
-        else:
-            raise TypeError("Selector must be a string (XPath or UiSelector)")
+        element = self.d.xpath(selector)
 
         if not element.wait_gone(timeout=timeout):
             raise Exception(f"Element with selector '{selector}' still visible even after {timeout} seconds.")
         return element
     
-    # Click ---------------------------------------------------
+    # Tap ---------------------------------------------------
     
-    def click_element(self, selector, timeout=10):
+    def tap_element(self, selector, timeout=10):
         """
-        Waits for an element (XPath or UiSelector) and clicks it.
+        Waits for an element (XPath) and taps it.
 
         Args:
-            selector (str): XPath or UiSelector string.
+            selector (str): XPath string.
             timeout (int): Maximum seconds to wait. Default is 10.
 
         Raises:
             TypeError: If selector is not a string.
             Exception: If element does not appear within the timeout.
         """
-        if isinstance(selector, str):
-            if selector.startswith("//") or selector.startswith("("):
-                element = self.d.xpath(selector)
-            else:
-                element = self.d(**{"uiautomator": selector})
-        else:
-            raise TypeError("Selector must be a string (XPath or UiSelector)")
+        element = self.d.xpath(selector)    
 
         if not element.wait(timeout=timeout):
             raise Exception(f"Element with selector '{selector}' not found after {timeout} seconds.")
         element.click()
     
-    def click_by_text(self, texto, timeout=10):
+    def tap_by_text(self, texto, timeout=10):
         """
-        Waits for an element with the specified text and clicks it.
+        Waits for an element with the specified text and taps it.
 
         Args:
             texto (str): Text of the element.
@@ -194,10 +176,10 @@ class AndroidUiAutomation:
         
     def get_text(self, selector, timeout=10):
         """
-        Retrieves the text of an element located via XPath or UiSelector.
+        Retrieves the text of an element located via XPath.
 
         Args:
-            selector (str): XPath or UiSelector string.
+            selector (str): XPath string.
             timeout (int): Maximum seconds to wait. Default is 10.
 
         Returns:
@@ -207,13 +189,7 @@ class AndroidUiAutomation:
             TypeError: If selector is not a string.
             Exception: If element is not found within the timeout.
         """
-        if isinstance(selector, str):
-            if selector.startswith("//") or selector.startswith("("):
-                element = self.d.xpath(selector)
-            else:
-                element = self.d(**{"uiautomator": selector})
-        else:
-            raise TypeError("Selector must be a string (XPath or UiSelector)")
+        element = self.d.xpath(selector)
 
         if not element.wait(timeout=timeout):
             raise Exception(f"Element with selector '{selector}' not found after {timeout} seconds.")
@@ -223,10 +199,10 @@ class AndroidUiAutomation:
     
     def input_text(self, selector, text, timeout=10):
         """
-        Sets text into an input element located via XPath or UiSelector.
+        Sets text into an input element located via XPath.
 
         Args:
-            selector (str): XPath or UiSelector string.
+            selector (str): XPath string.
             text (str): Text to input.
             timeout (int): Maximum seconds to wait. Default is 10.
 
@@ -234,17 +210,11 @@ class AndroidUiAutomation:
             TypeError: If selector is not a string.
             Exception: If element is not found within the timeout.
         """
-        if isinstance(selector, str):
-            if selector.startswith("//") or selector.startswith("("):
-                element = self.d.xpath(selector)
-            else:
-                element = self.d(**{"uiautomator": selector})
-        else:
-            raise TypeError("Selector must be a string (XPath or UiSelector)")
+        element = self.d.xpath(selector)
 
         if not element.wait(timeout=timeout):
             raise Exception(f"Element with selector '{selector}' not found after {timeout} seconds.")
-        print("Set text:", text)
+        
         return element.set_text(text)
     
     # Keyboard / Key Actions ---------------------------------------------------
