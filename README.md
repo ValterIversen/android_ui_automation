@@ -78,8 +78,8 @@ Open App And Click Button
 
 ---
 
-# 📌 Example Project (Base Template)
+# Example Project (Base Template)
 
 To see a **complete working example** using this library, check out the base project:
 
-👉 **https://github.com/ValterIversen/RobotFramework-UiAutomatorLibrary**
+**https://github.com/ValterIversen/RobotFramework-UiAutomatorLibrary**
