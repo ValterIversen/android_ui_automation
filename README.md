@@ -1,34 +1,37 @@
 # android_ui_automation
 
-Python library for Android UI automation using uiautomator2, compatible with Robot Framework.
+Python library for Android UI automation using **uiautomator2**, fully compatible with **Robot Framework**.
 
 ## Installation
 
-You can install the library via pip:
+Install from PyPI:
 
 ```bash
 pip install robotframework-androiduiautomation
 ```
+
 Or install locally for development:
 
 ```bash
 git clone https://github.com/ValterIversen/android_ui_automation
-cd robotframework-androiduiautomation
+cd android_ui_automation
 pip install -e .
 ```
 
-Make sure `uiautomator2` is installed automatically as a dependency.
+`uiautomator2` will be installed automatically as a dependency.
+
+---
 
 ## Usage in Robot Framework
 
-### Settings
+### ***Settings***
 
 ```robot
 *** Settings ***
 Library    AndroidUiAutomation
 ```
 
-### Variables
+### ***Variables***
 
 ```robot
 *** Variables ***
@@ -36,7 +39,7 @@ ${DEVICE}    emulator-5554
 ${APP}       com.example.app
 ```
 
-### Test Case Example
+### ***Test Case Example***
 
 ```robot
 *** Test Cases ***
@@ -50,18 +53,33 @@ Open App And Click Button
     Close App    ${APP}
 ```
 
-### Features
+---
 
-* Connect to Android devices/emulators
-* Launch and close apps
-* Wait for elements (text, XPath, UiSelector) to appear/disappear
-* Click elements by text, XPath, or UiSelector
-* Get and set text
-* Press keys or system buttons (Home, Back, Menu)
-* Fully compatible with Robot Framework keywords
+## Features
 
-### Notes
+- Connect to Android devices/emulators  
+- Launch and close apps  
+- Wait for elements (Text or XPath) to appear/disappear  
+- Click by text or XPath  
+- Get and set text  
+- Type keys  
+- Press Android system buttons (Home, Back, Menu)  
+- Fully compatible with Robot Framework keyword-style usage  
+- All public Python methods automatically become RF keywords  
 
-* All Python public methods are automatically available as Robot Framework keywords.
-* Some system buttons have friendlier aliases: `Press Home Button`, `Press Back Button`, `Press Menu Button`.
-* Set `ROBOT_LIBRARY_SCOPE = GLOBAL` to maintain device connection across multiple tests.
+---
+
+## Notes
+
+- System buttons have friendly aliases:  
+  - `Press Home Button`  
+  - `Press Back Button`  
+  - `Press Menu Button`  
+
+---
+
+# 📌 Example Project (Base Template)
+
+To see a **complete working example** using this library, check out the base project:
+
+👉 **https://github.com/ValterIversen/RobotFramework-UiAutomatorLibrary**

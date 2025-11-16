@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="robotframework-androiduiautomation",
-    version="0.1.8",
+    version="0.1.9",
     description="Robot Framework library for Android automation using uiautomator2",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
